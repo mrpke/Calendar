@@ -80,8 +80,9 @@ def createMonths(yr,birth, feier, bild):
     cal=Calendar(0)
     x,y=0,0
     drawString="\\begin{figure}[!h]\n\\centering\n"
+    if bild != "none":
+        drawString+="\\tikz[overlay,remember picture]\\node[opacity=0.4]at (current page.center) {\includegraphics{"+bild+"}};"
 
-    drawString+="\\tikz[overlay,remember picture]\\node[opacity=0.4]at (current page.center) {\includegraphics{"+bild+"}};"
     drawString+="\\begin{tikzpicture}[y=0.80pt, x=0.8pt,yscale=-1, inner sep=0pt,outer sep=0pt]"
     drawString+=createYear(yr)
     for i in range(1, 13):
@@ -99,10 +100,16 @@ def loadPackages(papersize):
     packages+="\usepackage{helvet}\n\\renewcommand{\\familydefault}{\sfdefault}\n \\fontfamily{phv}\\selectfont"
     return packages
 
-def composeCalendar(yr, birthdays, feiertage,  bild, papersize="a0", color="FF7F00"):
+def composeCalendar(out, yr, birthdays, feiertage,  bild, papersize="a0", color="FF7F00"):
 
-    birth=createSpecialDatesDict(birthdays)
-    feier=createSpecialDatesDict(feiertage)
+    if birthdays != "none":
+        birth=createSpecialDatesDict(birthdays)
+    else:
+        birth=dict()
+    if feiertage != "none":
+        feier=createSpecialDatesDict(feiertage)
+    else:
+        feier=dict()
     color="\definecolor{use}{HTML}{"+color+"}\n"
     packg=loadPackages(papersize)
 
@@ -110,7 +117,7 @@ def composeCalendar(yr, birthdays, feiertage,  bild, papersize="a0", color="FF7F
     top="\documentclass{article}\n"
     mid="\\begin{document}\n"
     end="\end{document}"
-    A = open("test3.tex", 'w')
+    A = open(out, 'w')
     A.write(top+"\n"+packg+"\n"+color+"\n"+mid+"\n"+rect+"\n"+end)
     A.close()
 
