@@ -9,7 +9,7 @@ def createRectangle(sx, s0y, day, month, birth, feier, pm=0, length=286, height=
         sy=0
         Month ={1:"Januar",
                 2:"Februar",
-                3:"Maerz",
+                3:"M\\\"arz",
                 4:"April",
                 5:"Mai",
                 6:"Juni",
@@ -20,8 +20,8 @@ def createRectangle(sx, s0y, day, month, birth, feier, pm=0, length=286, height=
                 11:"November",
                 12:"Dezember"
                 }
-        drawString+="\path[draw=black, fill=use, opacity=0.250, even odd rule,line width=1.4pt] ("+str(sx)+","+str(sy)+") rectangle ("+str(sx+length)+","+str(sy+height)+");\n"
-        drawString+="\path[fill=black] ("+str(sx+4)+","+str(sy+27)+") node[above right, font=\Huge] {"+Month[month]+"};\n"
+        drawString+="\path[draw=black, fill=use,fill opacity=0.4, even odd rule,line width=1.4pt] ("+str(sx)+","+str(sy)+") rectangle ("+str(sx+length)+","+str(sy+height)+");\n"
+        drawString+="\path[draw=black] ("+str(sx+(length/2))+","+str(sy+(height/2))+") node[above right,anchor=center, font=\\Huge, scale=1.5] {"+Month[month]+"};"
         return drawString
 
     if day.month != month:
@@ -35,8 +35,8 @@ def createRectangle(sx, s0y, day, month, birth, feier, pm=0, length=286, height=
             5:"Sa",
             6:"So"
             }
-    colorized={5: "fill=use, ",
-                6: "fill=use, "
+    colorized={5: "fill=use, fill opacity=0.2,",
+                6: "fill=use, fill opacity=0.4,"
                 }
     if day.weekday() in colorized:
         color=colorized[day.weekday()]
@@ -47,7 +47,7 @@ def createRectangle(sx, s0y, day, month, birth, feier, pm=0, length=286, height=
     #return drawString
     #(149,363) / (433,427)
     #fill=use,opacity=0.25
-    drawString+="\path[draw=black,"+color+"opacity=0.250, even odd rule,line width=1.4pt] ("+str(sx)+","+str(sy)+") rectangle ("+str(sx+length)+","+str(sy+height)+");\n"
+    drawString+="\path[draw=black,"+color+" even odd rule,line width=1.4pt] ("+str(sx)+","+str(sy)+") rectangle ("+str(sx+length)+","+str(sy+height)+");\n"
     drawString+="\path[fill=black] ("+str(sx+4)+","+str(sy+27)+") node[above right, font=\Huge] {"+str(day.day)+"};\n"
     drawString+="\path[fill=black] ("+str(sx+length-4)+","+str(sy+height-4)+") node[above right, font=\Huge, anchor=south east] {"+days[day.weekday()]+"};\n"
     if str(day.day)+"."+str(day.month)+"." in birth:
