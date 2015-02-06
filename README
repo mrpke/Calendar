@@ -1,0 +1,2 @@
+To create a calendar (pdf) run createCalendar.py.
+pdflatex has to be installed.
