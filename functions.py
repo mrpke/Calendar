@@ -1,7 +1,8 @@
-#defining the functions used for creating the tex file.
+#  defining the functions used for creating the tex file.
 import datetime
 from calendar import Calendar
 import csv
+
 
 
 def createYear(yr):

@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+
 from subprocess import call
 import os.path
 import functions as f
@@ -27,4 +28,5 @@ output=raw_input('Last question, I promise! What should the calendar file be nam
 color=raw_input('I lied. What color do you like? (HTML notation) >')
 
 f.composeCalendar(output, yr, birth, feier, image, "a0", color)
+#calling the creation process:
 call(["pdflatex", output])
