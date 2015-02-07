@@ -20,12 +20,21 @@ while not os.path.isfile(image) and image != 'none':
     birth=raw_input('Tell me... or type none >')
 
 yr=int(raw_input('Type the year! >'))
-while not yr>2000:
-    yr=int(raw_input('Are you trying to go back to the past? >'))
+while not type(yr) is int and not yr>2000:
+    yr=int(raw_input('Are you trying to go back to the past? (give a valid year) >'))
 
 output=raw_input('Last question, I promise! What should the calendar file be named?\n>')
 
-color=raw_input('I lied. What color do you like? (HTML notation) >')
+TUMcolor={"TUMblau":"0065BD",
+            "TUMgreen":"A2AD00",
+            "TUMorange":"E37222",
+            "TUMelfenbein":"DAD7CB",
+            "happytobepink":"F52887"
+             }
+
+color=raw_input('I lied. What color do you like? (HTML notation, or chose TUMblau, TUMgreen, TUMorange, TUMelfenbein) \n ~~~~~~~>')
+if color in TUMcolor:
+    color=TUMcolor[color]
 
 f.composeCalendar(output, yr, birth, feier, image, "a0", color)
 #calling the creation process:
