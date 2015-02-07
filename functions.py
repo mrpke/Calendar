@@ -4,7 +4,6 @@ from calendar import Calendar
 import csv
 
 
-
 def createYear(yr):
     drawString="\path[fill=gray, opacity=0.8] ("+str(286+300*12)+",0) node[above right, color=gray, opacity=0.8, font=\Huge, scale=8, anchor=south east] {\\textbf{"+str(yr)+"}};\n "
     return drawString
