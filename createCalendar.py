@@ -17,7 +17,7 @@ while not os.path.isfile(feier) and feier != 'none':
 
 image=raw_input('Image for the background? >')
 while not os.path.isfile(image) and image != 'none':
-    birth=raw_input('Tell me... or type none >')
+    image=raw_input('Tell me... or type none >')
 
 yr=int(raw_input('Type the year! >'))
 while not type(yr) is int and not yr>2000:
